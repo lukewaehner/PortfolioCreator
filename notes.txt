@@ -1,0 +1,28 @@
+visits website
+user logins
+user inputs resume to fill as much as survey as they can / complete full survey
+modularize the layout (hero section top to bottom, left to right, etc)
+color schemes
+font styles
+images
+buttons
+
+spits back react project files
+gives documentation on how to run it
+
+discount hosting through website
+
+premium version -> framer motion, better customization, videos, user analytics tracking
+
+app version that spins react project for them
+
+--- 
+Other notes:
+- user can save progress with login
+- collect user data / cookies
+- upload their resume and scan it for them to fill out as much as possible
+- documentation on how to host their website after the react app is returned (they need to build the app themselves after pasting the files into a directory)
+- that or a web app that hosts the app for them with access to their computer and terminal system
+- user can choose to have the app hosted for them (partner eventually)
+- aws hosting our website
+- backend with user data, analytics, different themes and customization options / widgets
