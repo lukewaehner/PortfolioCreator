@@ -1,0 +1,38 @@
+{
+  "theme": {
+    "colors": {
+      "primary": "#1E3A8A",
+      "secondary": "#9333EA",
+      "background": "#F3F4F6",
+      "text": "#111827",
+      "accent": "#F59E0B"
+    }
+  },
+  "hero": {
+    "name": "John Doe",
+    "title": "Full Stack Developer",
+    "tagline": "Building modern web experiences",
+    "image": "/profile.jpg",
+    "ctas": [
+      { "label": "Download Resume", "href": "/resume.pdf", "primary": true },
+      { "label": "View Projects", "href": "#projects" }
+    ]
+  },
+  "about": {
+    "bio": "I'm a developer passionate about clean design and scalable systems.",
+    "photo": "/profile.jpg"
+  },
+  "skills": ["JavaScript", "React", "Next.js", "Node.js", "Tailwind CSS"],
+  "projects": [
+    {
+      "title": "My Portfolio Site",
+      "description": "A custom-built portfolio using Next.js and Tailwind.",
+      "tech": ["Next.js", "Tailwind", "Framer Motion"],
+      "link": "https://example.com"
+    }
+  ],
+  "contact": {
+    "email": "john.doe@example.com",
+    "phone": "+1234567890"
+  }
+}
