@@ -30,7 +30,7 @@ export default function Contact() {
     setStatus("submitting");
 
     try {
-      const response = await fetch("/api/contact", {
+      const response = await fetch("/backend/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formState),
@@ -51,24 +51,26 @@ export default function Contact() {
 
   return (
     <section
-      className="h-[45vh] flex flex-col items-center justify-center bg-white rounded-2xl shadow-xl overflow-hidden"
+      className="min-h-screen sm:min-h-[45vh] max-h-none sm:max-h-[60vh] md:max-h-none lg:max-h-[70vh] flex flex-col items-center justify-center bg-white rounded-lg sm:rounded-xl md:rounded-2xl shadow-md sm:shadow-lg md:shadow-xl overflow-hidden w-full"
       style={{
         color: colors.text,
       }}
     >
-      <div className="grid grid-cols-1 md:grid-cols-2">
+      <div className="grid grid-cols-1 sm:grid-cols-2 w-full h-full">
         {/* Left Side - Contact Info */}
         <div
-          className="p-8 md:p-12 lg:p-16 flex flex-col justify-between"
+          className="p-5 sm:p-6 md:p-8 lg:p-16 xl:p-20 flex flex-col justify-between max-h-none"
           style={{
             background: `linear-gradient(135deg, ${colors.primary}, ${colors.secondary})`,
             color: "white",
-            minHeight: "500px",
+            minHeight: "350px",
+            height: "100%",
+            width: "100%",
           }}
         >
           <div>
             <motion.h2
-              className="text-3xl font-bold mb-6"
+              className="text-xl sm:text-2xl md:text-2xl lg:text-3xl font-bold mb-3 sm:mb-4 md:mb-5 lg:mb-6"
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
@@ -77,7 +79,7 @@ export default function Contact() {
             </motion.h2>
 
             <motion.p
-              className="text-white/90 mb-8 leading-relaxed"
+              className="text-white/90 mb-4 sm:mb-5 md:mb-6 lg:mb-8 text-xs sm:text-sm md:text-base leading-relaxed"
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
@@ -88,18 +90,18 @@ export default function Contact() {
           </div>
 
           <motion.div
-            className="space-y-4"
+            className="space-y-2 sm:space-y-3 md:space-y-4"
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
             {content.contact && (
               <>
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center">
+                <div className="flex items-center gap-2 md:gap-3">
+                  <div className="w-7 h-7 sm:w-8 sm:h-8 md:w-9 md:h-9 lg:w-10 lg:h-10 rounded-full bg-white/10 flex items-center justify-center">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      className="w-5 h-5"
+                      className="w-3 h-3 sm:w-4 sm:h-4 md:w-4 md:h-4 lg:w-5 lg:h-5"
                       viewBox="0 0 24 24"
                       fill="none"
                       stroke="currentColor"
@@ -111,15 +113,17 @@ export default function Contact() {
                       <polyline points="22,6 12,13 2,6"></polyline>
                     </svg>
                   </div>
-                  <p className="text-white/90">{content.contact.email}</p>
+                  <p className="text-white/90 text-xs sm:text-sm md:text-sm lg:text-base break-all">
+                    {content.contact.email}
+                  </p>
                 </div>
 
                 {content.contact.phone && (
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center">
+                  <div className="flex items-center gap-2 md:gap-3">
+                    <div className="w-7 h-7 sm:w-8 sm:h-8 md:w-9 md:h-9 lg:w-10 lg:h-10 rounded-full bg-white/10 flex items-center justify-center">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
-                        className="w-5 h-5"
+                        className="w-3 h-3 sm:w-4 sm:h-4 md:w-4 md:h-4 lg:w-5 lg:h-5"
                         viewBox="0 0 24 24"
                         fill="none"
                         stroke="currentColor"
@@ -130,7 +134,9 @@ export default function Contact() {
                         <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
                       </svg>
                     </div>
-                    <p className="text-white/90">{content.contact.phone}</p>
+                    <p className="text-white/90 text-xs sm:text-sm md:text-sm lg:text-base">
+                      {content.contact.phone}
+                    </p>
                   </div>
                 )}
               </>
@@ -139,9 +145,12 @@ export default function Contact() {
         </div>
 
         {/* Right Side - Form */}
-        <div className="p-8 md:p-12 lg:p-16" style={{ minHeight: "500px" }}>
+        <div
+          className="p-5 sm:p-6 md:p-8 lg:p-12 xl:p-16 w-full"
+          style={{ minHeight: "300px", height: "100%" }}
+        >
           <motion.h3
-            className="text-2xl font-semibold mb-8"
+            className="text-lg sm:text-xl md:text-xl lg:text-2xl font-semibold mb-4 sm:mb-5 md:mb-6 lg:mb-8"
             style={{ color: colors.primary }}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -151,7 +160,7 @@ export default function Contact() {
           </motion.h3>
 
           <motion.form
-            className="space-y-5"
+            className="space-y-3 sm:space-y-4 md:space-y-4 lg:space-y-5"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
@@ -165,7 +174,7 @@ export default function Contact() {
                 onFocus={() => handleFocus("name")}
                 onBlur={handleBlur}
                 required
-                className="w-full px-4 py-3 rounded-lg border bg-gray-50 transition-all duration-300 focus:outline-none focus:ring-2"
+                className="w-full px-2 sm:px-3 md:px-3 lg:px-4 py-2 md:py-2 lg:py-3 rounded-md sm:rounded-lg border bg-gray-50 transition-all duration-300 focus:outline-none focus:ring-2 text-xs sm:text-sm md:text-sm lg:text-base"
                 style={{
                   borderColor:
                     focused === "name"
@@ -176,8 +185,8 @@ export default function Contact() {
               <label
                 className={`absolute transition-all duration-200 pointer-events-none ${
                   formState.name || focused === "name"
-                    ? "-top-2.5 left-3 text-xs px-1 bg-white"
-                    : "top-3 left-4 text-gray-500"
+                    ? "-top-2 left-2 text-xs px-1 bg-white"
+                    : "top-2 left-2 sm:left-3 md:left-3 lg:left-4 text-gray-500 text-xs sm:text-sm md:text-sm"
                 }`}
                 style={{
                   color:
@@ -201,7 +210,7 @@ export default function Contact() {
                 onFocus={() => handleFocus("email")}
                 onBlur={handleBlur}
                 required
-                className="w-full px-4 py-3 rounded-lg border bg-gray-50 transition-all duration-300 focus:outline-none focus:ring-2"
+                className="w-full px-2 sm:px-3 md:px-3 lg:px-4 py-2 md:py-2 lg:py-3 rounded-md sm:rounded-lg border bg-gray-50 transition-all duration-300 focus:outline-none focus:ring-2 text-xs sm:text-sm md:text-sm lg:text-base"
                 style={{
                   borderColor:
                     focused === "email"
@@ -212,8 +221,8 @@ export default function Contact() {
               <label
                 className={`absolute transition-all duration-200 pointer-events-none ${
                   formState.email || focused === "email"
-                    ? "-top-2.5 left-3 text-xs px-1 bg-white"
-                    : "top-3 left-4 text-gray-500"
+                    ? "-top-2 left-2 text-xs px-1 bg-white"
+                    : "top-2 left-2 sm:left-3 md:left-3 lg:left-4 text-gray-500 text-xs sm:text-sm md:text-sm"
                 }`}
                 style={{
                   color:
@@ -231,13 +240,13 @@ export default function Contact() {
             <div className="relative">
               <textarea
                 name="message"
-                rows={6}
+                rows={3}
                 value={formState.message}
                 onChange={handleChange}
                 onFocus={() => handleFocus("message")}
                 onBlur={handleBlur}
                 required
-                className="w-full px-4 py-3 rounded-lg border bg-gray-50 transition-all duration-300 focus:outline-none focus:ring-2"
+                className="w-full px-2 sm:px-3 md:px-3 lg:px-4 py-2 md:py-2 lg:py-3 rounded-md sm:rounded-lg border bg-gray-50 transition-all duration-300 focus:outline-none focus:ring-2 text-xs sm:text-sm md:text-sm lg:text-base"
                 style={{
                   borderColor:
                     focused === "message"
@@ -248,8 +257,8 @@ export default function Contact() {
               <label
                 className={`absolute transition-all duration-200 pointer-events-none ${
                   formState.message || focused === "message"
-                    ? "-top-2.5 left-3 text-xs px-1 bg-white"
-                    : "top-3 left-4 text-gray-500"
+                    ? "-top-2 left-2 text-xs px-1 bg-white"
+                    : "top-2 left-2 sm:left-3 md:left-3 lg:left-4 text-gray-500 text-xs sm:text-sm md:text-sm"
                 }`}
                 style={{
                   color:
@@ -268,7 +277,7 @@ export default function Contact() {
               <motion.button
                 type="submit"
                 disabled={status === "submitting"}
-                className="w-full px-6 py-3 rounded-lg font-medium transition-all duration-300 flex items-center justify-center"
+                className="w-full px-3 sm:px-4 md:px-5 lg:px-6 py-2 md:py-2 lg:py-3 rounded-md sm:rounded-lg font-medium transition-all duration-300 flex items-center justify-center text-xs sm:text-sm md:text-sm lg:text-base"
                 style={{
                   backgroundColor: colors.accent,
                   color: colors.text,
@@ -282,7 +291,7 @@ export default function Contact() {
               >
                 {status === "submitting" ? (
                   <svg
-                    className="animate-spin h-5 w-5 mr-2"
+                    className="animate-spin h-3 w-3 sm:h-4 sm:w-4 md:h-4 md:w-4 lg:h-5 lg:w-5 mr-2"
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
                     viewBox="0 0 24 24"
@@ -308,13 +317,13 @@ export default function Contact() {
 
             {status === "success" && (
               <motion.div
-                className="p-4 rounded-lg bg-green-50 border border-green-200 text-green-800 flex items-center gap-2"
+                className="p-2 sm:p-3 md:p-3 lg:p-4 rounded-md sm:rounded-lg bg-green-50 border border-green-200 text-green-800 flex items-center gap-2 text-xs sm:text-sm md:text-sm lg:text-base"
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="h-5 w-5"
+                  className="h-3 w-3 sm:h-4 sm:w-4 md:h-4 md:w-4 lg:h-5 lg:w-5"
                   viewBox="0 0 20 20"
                   fill="currentColor"
                 >
@@ -330,13 +339,13 @@ export default function Contact() {
 
             {status === "error" && (
               <motion.div
-                className="p-4 rounded-lg bg-red-50 border border-red-200 text-red-800 flex items-center gap-2"
+                className="p-2 sm:p-3 md:p-3 lg:p-4 rounded-md sm:rounded-lg bg-red-50 border border-red-200 text-red-800 flex items-center gap-2 text-xs sm:text-sm md:text-sm lg:text-base"
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="h-5 w-5"
+                  className="h-3 w-3 sm:h-4 sm:w-4 md:h-4 md:w-4 lg:h-5 lg:w-5"
                   viewBox="0 0 20 20"
                   fill="currentColor"
                 >

@@ -11,7 +11,7 @@ export default function HeroSplit() {
 
   return (
     <section
-      className="min-h-screen grid grid-cols-1 md:grid-cols-2 items-center gap-8 overflow-hidden"
+      className="min-h-screen grid grid-cols-1 md:grid-cols-2 items-center gap-4 sm:gap-6 md:gap-8 overflow-hidden shadow-xl rounded-xl sm:rounded-2xl"
       style={{
         background: `linear-gradient(135deg, ${colors.background}f5, ${colors.background})`,
         color: colors.text,
@@ -19,14 +19,14 @@ export default function HeroSplit() {
     >
       {/* Left: Text block with modernized styling */}
       <motion.div
-        className="px-6 md:px-16 py-16 flex flex-col justify-center"
+        className="px-4 sm:px-6 md:px-10 lg:px-16 py-8 sm:py-12 md:py-16 flex flex-col justify-center"
         initial={{ opacity: 0, x: -30 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.7, ease: "easeOut" }}
       >
         {/* Subtle accent line */}
         <motion.div
-          className="w-16 h-1 mb-6 rounded-full"
+          className="w-12 sm:w-16 h-1 mb-4 sm:mb-6 rounded-full"
           style={{ backgroundColor: colors.accent }}
           initial={{ width: 0 }}
           animate={{ width: 64 }}
@@ -35,7 +35,7 @@ export default function HeroSplit() {
 
         {/* Name with modern typography */}
         <motion.h1
-          className="text-5xl md:text-6xl font-bold mb-3 tracking-tight relative"
+          className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-2 sm:mb-3 tracking-tight relative"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
@@ -56,17 +56,17 @@ export default function HeroSplit() {
 
         {/* Title with accent color */}
         <motion.div
-          className="flex items-center gap-2 mb-4"
+          className="flex items-center gap-2 mb-3 sm:mb-4"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
           <div
-            className="w-3 h-3 rounded-full"
+            className="w-2 h-2 sm:w-3 sm:h-3 rounded-full"
             style={{ backgroundColor: colors.secondary }}
           />
           <p
-            className="text-xl md:text-2xl font-medium"
+            className="text-lg sm:text-xl md:text-2xl font-medium"
             style={{ color: colors.secondary }}
           >
             {title}
@@ -76,7 +76,7 @@ export default function HeroSplit() {
         {/* Tagline with improved styling */}
         {tagline && (
           <motion.p
-            className="text-base md:text-lg max-w-md leading-relaxed"
+            className="text-sm sm:text-base md:text-lg max-w-md leading-relaxed"
             style={{ color: `${colors.text}cc` }}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -88,7 +88,7 @@ export default function HeroSplit() {
 
         {/* CTAs with modern styling */}
         <motion.div
-          className="mt-8 flex flex-wrap gap-4"
+          className="mt-6 sm:mt-8 flex flex-wrap gap-3 sm:gap-4"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
@@ -101,7 +101,7 @@ export default function HeroSplit() {
               <motion.a
                 key={i}
                 href={cta.href}
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-medium transition-all"
+                className="inline-flex items-center gap-1 sm:gap-2 px-4 sm:px-5 md:px-6 py-2 sm:py-3 rounded-full text-xs sm:text-sm font-medium transition-all"
                 style={{
                   backgroundColor: cta.primary
                     ? buttonColor
@@ -124,7 +124,7 @@ export default function HeroSplit() {
                 {cta.primary && (
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    className="w-4 h-4"
+                    className="w-3 h-3 sm:w-4 sm:h-4"
                     viewBox="0 0 24 24"
                     fill="none"
                     stroke="currentColor"
@@ -143,7 +143,7 @@ export default function HeroSplit() {
         {/* Decorative elements */}
         <div className="absolute bottom-0 left-0 w-full h-1/3 pointer-events-none opacity-20">
           <div
-            className="absolute w-64 h-64 rounded-full blur-3xl -bottom-32 -left-32"
+            className="absolute w-40 sm:w-64 h-40 sm:h-64 rounded-full blur-3xl -bottom-20 sm:-bottom-32 -left-20 sm:-left-32"
             style={{
               background: `radial-gradient(circle, ${colors.primary}, transparent 70%)`,
             }}
@@ -153,7 +153,7 @@ export default function HeroSplit() {
 
       {/* Right: Image block with modern treatment */}
       <motion.div
-        className="relative flex justify-center items-center h-full px-6 py-16 md:py-0 overflow-hidden"
+        className="relative flex justify-center items-center h-full px-4 sm:px-6 py-8 sm:py-12 md:py-0 overflow-hidden"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1, ease: "easeOut" }}
@@ -187,10 +187,10 @@ export default function HeroSplit() {
         </div>
 
         {/* Profile Image Container */}
-        <div className="relative w-64 h-64 md:w-80 md:h-80 z-10">
+        <div className="relative w-52 h-52 sm:w-64 sm:h-64 md:w-72 md:h-72 lg:w-80 lg:h-80 z-10">
           {/* Rotating border effect */}
           <motion.div
-            className="absolute -inset-3 rounded-full opacity-80"
+            className="absolute -inset-2 sm:-inset-3 rounded-full opacity-80"
             style={{
               background: `conic-gradient(from 0deg, ${colors.primary}, ${colors.secondary}, ${colors.accent}, ${colors.primary})`,
             }}
@@ -215,9 +215,9 @@ export default function HeroSplit() {
               <Image
                 src={image}
                 alt={name}
-                layout="fill"
-                objectFit="cover"
-                className="rounded-full"
+                fill
+                sizes="(max-width: 640px) 13rem, (max-width: 768px) 16rem, (max-width: 1024px) 18rem, 20rem"
+                className="rounded-full object-cover"
                 priority
               />
             </div>
@@ -234,7 +234,7 @@ export default function HeroSplit() {
 
         {/* Floating elements */}
         <motion.div
-          className="absolute top-16 right-16 w-20 h-20 rounded-full"
+          className="absolute top-8 sm:top-16 right-8 sm:right-16 w-12 sm:w-16 md:w-20 h-12 sm:h-16 md:h-20 rounded-full"
           style={{
             background: `linear-gradient(to right, ${colors.primary}, ${colors.secondary})`,
             opacity: 0.1,
@@ -251,7 +251,7 @@ export default function HeroSplit() {
         />
 
         <motion.div
-          className="absolute bottom-16 left-16 w-12 h-12 rounded-full"
+          className="absolute bottom-8 sm:bottom-16 left-8 sm:left-16 w-8 sm:w-10 md:w-12 h-8 sm:h-10 md:h-12 rounded-full"
           style={{
             background: `linear-gradient(to right, ${colors.secondary}, ${colors.accent})`,
             opacity: 0.1,

@@ -8,7 +8,7 @@ export default function HeroCentered() {
 
   return (
     <section
-      className="min-h-screen flex flex-col items-center justify-center text-center px-4 md:px-8 py-16"
+      className="min-h-screen flex flex-col items-center justify-center text-center px-4 md:px-8 py-10 sm:py-16 rounded-2xl shadow-xl"
       style={{
         background: `linear-gradient(to bottom, ${colors.background}, ${colors.background}ee)`,
         color: colors.text,
@@ -16,7 +16,7 @@ export default function HeroCentered() {
     >
       {/* Profile Image with modern styling using theme colors */}
       <motion.div
-        className="relative size-80 md:size-85  mb-8"
+        className="relative w-40 h-40 sm:w-64 sm:h-64 md:w-80 md:h-80 mb-4 sm:mb-6 md:mb-8"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7, ease: "easeOut" }}
@@ -45,9 +45,9 @@ export default function HeroCentered() {
             <Image
               src={image}
               alt={`${name}'s profile picture`}
-              layout="fill"
-              objectFit="cover"
-              className="rounded-full"
+              fill
+              sizes="(max-width: 640px) 10rem, (max-width: 768px) 16rem, 20rem"
+              className="rounded-full object-cover"
               priority
             />
           </div>
@@ -56,7 +56,7 @@ export default function HeroCentered() {
 
       {/* Name with gradient text effect using theme colors */}
       <motion.h1
-        className="text-4xl md:text-8xl font-bold mb-3 tracking-tight"
+        className="text-3xl sm:text-4xl md:text-6xl lg:text-8xl font-bold mb-2 sm:mb-3 tracking-tight px-2"
         style={{
           background: `linear-gradient(to right, ${colors.primary}, ${colors.secondary})`,
           WebkitBackgroundClip: "text",
@@ -72,7 +72,7 @@ export default function HeroCentered() {
 
       {/* Title with subtle animation using secondary color */}
       <motion.div
-        className="inline-block mb-4 px-4 py-1 rounded-full"
+        className="inline-block mb-3 sm:mb-4 px-3 sm:px-4 py-1 rounded-full"
         style={{
           backgroundColor: `${colors.secondary}15`,
           backdropFilter: "blur(4px)",
@@ -83,7 +83,7 @@ export default function HeroCentered() {
         transition={{ duration: 0.5, delay: 0.4, ease: "easeOut" }}
       >
         <p
-          className="text-lg md:text-2xl font-medium"
+          className="text-base sm:text-lg md:text-2xl font-medium"
           style={{ color: colors.secondary }}
         >
           {title}
@@ -93,7 +93,7 @@ export default function HeroCentered() {
       {/* Tagline with improved styling using text color */}
       {tagline && (
         <motion.p
-          className="mt-2 mb-8 text-base md:text-lg max-w-xl mx-auto leading-relaxed"
+          className="mt-2 mb-6 sm:mb-8 text-sm sm:text-base md:text-lg max-w-xl mx-auto leading-relaxed px-2"
           style={{ color: `${colors.text}cc` }}
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
@@ -105,7 +105,7 @@ export default function HeroCentered() {
 
       {/* Call-to-Actions with modern design using accent and primary colors */}
       <motion.div
-        className="mt-6 flex flex-col sm:flex-row justify-center gap-4 w-full max-w-md mx-auto"
+        className="mt-4 sm:mt-6 flex flex-col sm:flex-row justify-center gap-3 sm:gap-4 w-full max-w-xs sm:max-w-md mx-auto px-4 sm:px-0"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.8, ease: "easeOut" }}
@@ -118,7 +118,7 @@ export default function HeroCentered() {
             <motion.a
               key={i}
               href={cta.href}
-              className="px-8 py-3 rounded-full text-base font-medium transition-all w-full flex items-center justify-center gap-2"
+              className="px-5 sm:px-6 md:px-8 py-2 sm:py-3 rounded-full text-sm sm:text-base font-medium transition-all w-full flex items-center justify-center gap-2"
               style={{
                 backgroundColor: cta.primary
                   ? buttonColor
@@ -147,7 +147,7 @@ export default function HeroCentered() {
               {cta.primary && (
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="w-5 h-5"
+                  className="w-4 h-4 sm:w-5 sm:h-5"
                   viewBox="0 0 24 24"
                   fill="none"
                   stroke="currentColor"
@@ -166,7 +166,7 @@ export default function HeroCentered() {
       {/* Decorative elements using theme colors */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
         <motion.div
-          className="absolute top-16 left-16 w-64 h-64 rounded-full opacity-10"
+          className="absolute top-8 sm:top-16 left-4 sm:left-16 w-32 sm:w-48 md:w-64 h-32 sm:h-48 md:h-64 rounded-full opacity-10"
           style={{
             background: `radial-gradient(circle, ${colors.primary}, transparent 70%)`,
           }}
@@ -175,7 +175,7 @@ export default function HeroCentered() {
           transition={{ duration: 2, ease: "easeOut" }}
         />
         <motion.div
-          className="absolute bottom-16 right-16 w-96 h-96 rounded-full opacity-10"
+          className="absolute bottom-8 sm:bottom-16 right-4 sm:right-16 w-40 sm:w-64 md:w-96 h-40 sm:h-64 md:h-96 rounded-full opacity-10"
           style={{
             background: `radial-gradient(circle, ${colors.accent}, transparent 70%)`,
           }}

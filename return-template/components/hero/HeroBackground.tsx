@@ -7,14 +7,15 @@ export default function HeroBackground() {
   const { colors } = content.theme;
 
   return (
-    <section className="relative min-h-screen w-full flex items-center justify-center overflow-hidden">
+    <section className="relative min-h-screen w-full flex items-center justify-center overflow-hidden shadow-xl rounded-2xl">
       {/* Background with gradient overlay */}
       <div className="absolute inset-0 w-full h-full">
         <Image
           src={image}
           alt="Background"
-          layout="fill"
-          objectFit="cover"
+          fill
+          sizes="100vw"
+          className="object-cover"
           quality={90}
           priority
         />
@@ -28,10 +29,10 @@ export default function HeroBackground() {
       </div>
 
       {/* Content Container */}
-      <div className="relative z-10 max-w-5xl mx-auto px-6 md:px-8 py-16 text-center">
+      <div className="relative z-10 w-full max-w-5xl mx-auto px-4 sm:px-6 md:px-8 py-8 sm:py-12 md:py-16 text-center">
         {/* Glass morphism effect container */}
         <motion.div
-          className="backdrop-blur-md p-8 md:p-12 rounded-2xl border shadow-2xl"
+          className="backdrop-blur-md p-5 sm:p-8 md:p-12 rounded-xl sm:rounded-2xl border shadow-xl sm:shadow-2xl"
           style={{
             backgroundColor: `${colors.background}30`,
             borderColor: `${colors.background}30`,
@@ -47,7 +48,7 @@ export default function HeroBackground() {
             transition={{ duration: 0.8 }}
           >
             <motion.h1
-              className="text-4xl md:text-6xl lg:text-7xl font-bold mb-4 tracking-tight"
+              className="text-2xl sm:text-4xl md:text-6xl lg:text-7xl font-bold mb-2 sm:mb-4 tracking-tight"
               style={{ color: colors.background }}
               initial={{ y: 20 }}
               animate={{ y: 0 }}
@@ -57,7 +58,7 @@ export default function HeroBackground() {
             </motion.h1>
 
             <motion.p
-              className="text-xl md:text-2xl font-medium mb-6"
+              className="text-lg sm:text-xl md:text-2xl font-medium mb-3 sm:mb-6"
               style={{ color: `${colors.background}E6` }}
               initial={{ y: 20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
@@ -68,7 +69,7 @@ export default function HeroBackground() {
 
             {tagline && (
               <motion.p
-                className="text-base md:text-lg max-w-2xl mx-auto mb-8 leading-relaxed"
+                className="text-sm sm:text-base md:text-lg max-w-2xl mx-auto mb-4 sm:mb-6 md:mb-8 leading-relaxed"
                 style={{ color: `${colors.background}CC` }}
                 initial={{ y: 20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
@@ -80,7 +81,7 @@ export default function HeroBackground() {
 
             {/* CTA Buttons with improved styling using accent color */}
             <motion.div
-              className="flex flex-col sm:flex-row justify-center items-center gap-4"
+              className="flex flex-col sm:flex-row justify-center items-center gap-3 sm:gap-4"
               initial={{ y: 20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.5, delay: 0.6, ease: "easeOut" }}
@@ -89,7 +90,7 @@ export default function HeroBackground() {
                 <motion.a
                   key={i}
                   href={cta.href}
-                  className="px-8 py-3 rounded-full text-base font-medium transition-all w-full sm:w-auto"
+                  className="px-5 sm:px-6 md:px-8 py-2 sm:py-3 rounded-full text-sm sm:text-base font-medium transition-all w-full sm:w-auto flex items-center justify-center"
                   style={{
                     backgroundColor: cta.primary
                       ? colors.accent
@@ -119,7 +120,7 @@ export default function HeroBackground() {
 
         {/* Decorative elements using theme colors */}
         <motion.div
-          className="absolute -bottom-16 -right-16 w-64 h-64 rounded-full"
+          className="absolute -bottom-8 sm:-bottom-16 -right-8 sm:-right-16 w-32 sm:w-48 md:w-64 h-32 sm:h-48 md:h-64 rounded-full"
           style={{
             background: `radial-gradient(circle, ${colors.accent}40 0%, transparent 70%)`,
           }}
@@ -129,7 +130,7 @@ export default function HeroBackground() {
         />
 
         <motion.div
-          className="absolute -top-8 -left-8 w-40 h-40 rounded-full"
+          className="absolute -top-4 sm:-top-8 -left-4 sm:-left-8 w-20 sm:w-32 md:w-40 h-20 sm:h-32 md:h-40 rounded-full"
           style={{
             background: `radial-gradient(circle, ${colors.secondary}30 0%, transparent 70%)`,
           }}

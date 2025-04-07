@@ -47,23 +47,23 @@ export default function ContactAlternative() {
 
   return (
     <section
-      className="min-h-[40vh] bg-white rounded-2xl shadow-xl overflow-hidden"
+      className="min-h-[40vh] bg-white rounded-lg sm:rounded-xl md:rounded-2xl shadow-md sm:shadow-lg md:shadow-xl overflow-hidden"
       style={{ color: colors.text }}
     >
       {/* Top header bar */}
       <div
-        className="h-3"
+        className="h-2 sm:h-2.5 md:h-3"
         style={{
           background: `linear-gradient(to right, ${colors.primary}, ${colors.secondary}, ${colors.accent})`,
         }}
       />
 
-      <div className="p-8 md:p-10 lg:p-12">
+      <div className="p-4 sm:p-6 md:p-8 lg:p-12">
         {/* Two-column header */}
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 md:mb-12">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 sm:mb-8 md:mb-12">
           <div>
             <motion.h2
-              className="text-3xl font-bold"
+              className="text-xl sm:text-2xl md:text-3xl font-bold"
               style={{ color: colors.primary }}
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
@@ -72,7 +72,7 @@ export default function ContactAlternative() {
               Get in Touch
             </motion.h2>
             <motion.p
-              className="text-gray-600 mt-2"
+              className="text-gray-600 mt-1 sm:mt-2 text-xs sm:text-sm md:text-base"
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
@@ -83,17 +83,17 @@ export default function ContactAlternative() {
 
           {/* Contact info with icons */}
           <motion.div
-            className="flex flex-col gap-1 mt-4 md:mt-0"
+            className="flex flex-col gap-1 mt-3 sm:mt-4 md:mt-0"
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
             {content.contact && (
               <>
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-1.5 sm:gap-2">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    className="w-4 h-4"
+                    className="w-3.5 h-3.5 sm:w-4 sm:h-4"
                     viewBox="0 0 24 24"
                     fill="none"
                     stroke={colors.secondary}
@@ -106,7 +106,7 @@ export default function ContactAlternative() {
                   </svg>
                   <a
                     href={`mailto:${content.contact.email}`}
-                    className="text-sm hover:underline"
+                    className="text-xs sm:text-sm hover:underline truncate max-w-[150px] sm:max-w-[200px] md:max-w-none"
                     style={{ color: colors.text }}
                   >
                     {content.contact.email}
@@ -114,10 +114,10 @@ export default function ContactAlternative() {
                 </div>
 
                 {content.contact.phone && (
-                  <div className="flex items-center gap-2">
+                  <div className="flex items-center gap-1.5 sm:gap-2">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      className="w-4 h-4"
+                      className="w-3.5 h-3.5 sm:w-4 sm:h-4"
                       viewBox="0 0 24 24"
                       fill="none"
                       stroke={colors.secondary}
@@ -129,7 +129,7 @@ export default function ContactAlternative() {
                     </svg>
                     <a
                       href={`tel:${content.contact.phone}`}
-                      className="text-sm hover:underline"
+                      className="text-xs sm:text-sm hover:underline"
                       style={{ color: colors.text }}
                     >
                       {content.contact.phone}
@@ -142,20 +142,20 @@ export default function ContactAlternative() {
         </div>
 
         {/* Form and card grid layout */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {/* Form takes 2/3 of the space */}
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-4 sm:gap-5 md:gap-6">
+          {/* Form takes 3/5 of the space */}
           <motion.div
-            className="md:col-span-2"
+            className="md:col-span-3"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.3 }}
           >
-            <form className="space-y-4" onSubmit={handleSubmit}>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <form className="space-y-3 sm:space-y-4" onSubmit={handleSubmit}>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                 <div>
                   <label
                     htmlFor="name"
-                    className="block text-sm font-medium mb-1"
+                    className="block text-xs sm:text-sm font-medium mb-1"
                     style={{ color: colors.primary }}
                   >
                     Name
@@ -166,7 +166,7 @@ export default function ContactAlternative() {
                     value={formState.name}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-2 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 transition-all duration-200"
+                    className="w-full px-3 sm:px-4 py-1.5 sm:py-2 rounded-md sm:rounded-lg border border-gray-200 focus:outline-none focus:ring-2 transition-all duration-200 text-xs sm:text-sm"
                     style={{
                       backgroundColor: "#F9FAFB",
                     }}
@@ -175,7 +175,7 @@ export default function ContactAlternative() {
                 <div>
                   <label
                     htmlFor="email"
-                    className="block text-sm font-medium mb-1"
+                    className="block text-xs sm:text-sm font-medium mb-1"
                     style={{ color: colors.primary }}
                   >
                     Email
@@ -187,7 +187,7 @@ export default function ContactAlternative() {
                     value={formState.email}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-2 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 transition-all duration-200"
+                    className="w-full px-3 sm:px-4 py-1.5 sm:py-2 rounded-md sm:rounded-lg border border-gray-200 focus:outline-none focus:ring-2 transition-all duration-200 text-xs sm:text-sm"
                     style={{
                       backgroundColor: "#F9FAFB",
                     }}
@@ -197,7 +197,7 @@ export default function ContactAlternative() {
               <div>
                 <label
                   htmlFor="message"
-                  className="block text-sm font-medium mb-1"
+                  className="block text-xs sm:text-sm font-medium mb-1"
                   style={{ color: colors.primary }}
                 >
                   Message
@@ -205,11 +205,11 @@ export default function ContactAlternative() {
                 <textarea
                   id="message"
                   name="message"
-                  rows={4}
+                  rows={3}
                   value={formState.message}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-2 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 transition-all duration-200"
+                  className="w-full px-3 sm:px-4 py-1.5 sm:py-2 rounded-md sm:rounded-lg border border-gray-200 focus:outline-none focus:ring-2 transition-all duration-200 text-xs sm:text-sm"
                   style={{
                     backgroundColor: "#F9FAFB",
                   }}
@@ -219,7 +219,7 @@ export default function ContactAlternative() {
               <motion.button
                 type="submit"
                 disabled={status === "submitting"}
-                className="px-6 py-2.5 rounded-lg font-medium transition-all duration-200 flex items-center gap-2"
+                className="px-4 sm:px-5 md:px-6 py-1.5 sm:py-2 md:py-2.5 rounded-md sm:rounded-lg font-medium transition-all duration-200 flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm"
                 style={{
                   backgroundColor: colors.accent,
                   color: "#ffffff",
@@ -233,7 +233,7 @@ export default function ContactAlternative() {
               >
                 {status === "submitting" && (
                   <svg
-                    className="animate-spin h-4 w-4"
+                    className="animate-spin h-3 w-3 sm:h-4 sm:w-4"
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
                     viewBox="0 0 24 24"
@@ -260,13 +260,13 @@ export default function ContactAlternative() {
             {/* Status messages */}
             {status === "success" && (
               <motion.div
-                className="mt-4 p-3 rounded-lg bg-green-50 border border-green-100 text-green-700 flex items-center gap-2 text-sm"
+                className="mt-3 sm:mt-4 p-2 sm:p-3 rounded-md sm:rounded-lg bg-green-50 border border-green-100 text-green-700 flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm"
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="h-5 w-5"
+                  className="h-4 w-4 sm:h-5 sm:w-5"
                   viewBox="0 0 20 20"
                   fill="currentColor"
                 >
@@ -282,13 +282,13 @@ export default function ContactAlternative() {
 
             {status === "error" && (
               <motion.div
-                className="mt-4 p-3 rounded-lg bg-red-50 border border-red-100 text-red-700 flex items-center gap-2 text-sm"
+                className="mt-3 sm:mt-4 p-2 sm:p-3 rounded-md sm:rounded-lg bg-red-50 border border-red-100 text-red-700 flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm"
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="h-5 w-5"
+                  className="h-4 w-4 sm:h-5 sm:w-5"
                   viewBox="0 0 20 20"
                   fill="currentColor"
                 >
@@ -303,9 +303,9 @@ export default function ContactAlternative() {
             )}
           </motion.div>
 
-          {/* Card on the right 1/3 */}
+          {/* Card on the right 2/5 */}
           <motion.div
-            className="rounded-xl p-6 flex flex-col justify-between"
+            className="md:col-span-2 rounded-md sm:rounded-lg md:rounded-xl p-4 sm:p-5 md:p-6 flex flex-col justify-between"
             style={{
               background: `linear-gradient(135deg, ${colors.primary}11, ${colors.secondary}11)`,
               border: `1px solid ${colors.primary}20`,
@@ -316,12 +316,12 @@ export default function ContactAlternative() {
           >
             <div>
               <div
-                className="w-12 h-12 rounded-full flex items-center justify-center mb-4"
+                className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center mb-3 sm:mb-4"
                 style={{ backgroundColor: `${colors.primary}15` }}
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="w-6 h-6"
+                  className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6"
                   viewBox="0 0 24 24"
                   fill="none"
                   stroke={colors.primary}
@@ -333,30 +333,46 @@ export default function ContactAlternative() {
                 </svg>
               </div>
               <h3
-                className="text-lg font-semibold mb-2"
+                className="text-base sm:text-lg font-semibold mb-1.5 sm:mb-2"
                 style={{ color: colors.primary }}
               >
                 Fast Response
               </h3>
-              <p className="text-sm text-gray-600 mb-6">
+              <p className="text-xs sm:text-sm text-gray-600 mb-4 sm:mb-5 md:mb-6">
                 I typically respond to all inquiries within 24 hours. Your
                 message is important to me.
               </p>
             </div>
 
             {/* Skills tags */}
-            <div>
-              <h4
-                className="text-sm font-medium mb-3"
-                style={{ color: colors.secondary }}
-              >
-                My Skills
-              </h4>
-              <div className="flex flex-wrap gap-2">
-                {content.skills?.slice(0, 5).map((skill, i) => (
+            {content.skills && content.skills.categories
+              ? content.skills.categories
+                  .flatMap((category) =>
+                    category.items.slice(0, 2).map((skill, i) => (
+                      <span
+                        key={`${category.name}-${i}`}
+                        className="text-[10px] sm:text-xs px-2 sm:px-3 py-0.5 sm:py-1 rounded-full"
+                        style={{
+                          backgroundColor: `${colors.primary}10`,
+                          color: colors.text,
+                          border: `1px solid ${colors.primary}20`,
+                        }}
+                      >
+                        {skill.name}
+                      </span>
+                    ))
+                  )
+                  .slice(0, 5)
+              : [
+                  "JavaScript",
+                  "React",
+                  "Node.js",
+                  "Tailwind CSS",
+                  "TypeScript",
+                ].map((skill, i) => (
                   <span
                     key={i}
-                    className="text-xs px-3 py-1 rounded-full"
+                    className="text-[10px] sm:text-xs px-2 sm:px-3 py-0.5 sm:py-1 rounded-full"
                     style={{
                       backgroundColor: `${colors.primary}10`,
                       color: colors.text,
@@ -366,8 +382,6 @@ export default function ContactAlternative() {
                     {skill}
                   </span>
                 ))}
-              </div>
-            </div>
           </motion.div>
         </div>
       </div>

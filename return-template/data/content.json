@@ -19,20 +19,159 @@
     ]
   },
   "about": {
-    "bio": "I'm a developer passionate about clean design and scalable systems.",
-    "photo": "/profile.jpg"
+    "summary": "Full-stack developer specializing in React and Node.js, passionate about creating elegant, user-friendly applications that solve real-world problems.",
+    "bio": "I'm a developer passionate about clean design and scalable systems. With experience across the entire development stack, I bring technical expertise and creative problem-solving to every project.",
+    "experience": "6+",
+    "projects": "25+",
+    "strengths": [
+      "Problem Solving",
+      "Technical Leadership",
+      "User-Centered Design",
+      "System Architecture",
+      "Agile Methodologies",
+      "Performance Optimization"
+    ],
+    "journey": [
+      {
+        "year": "2023",
+        "title": "Senior Full Stack Developer",
+        "company": "Tech Innovations Inc."
+      },
+      {
+        "year": "2021",
+        "title": "Frontend Lead",
+        "company": "Digital Solutions"
+      },
+      {
+        "year": "2019",
+        "title": "Web Developer",
+        "company": "Creative Web Agency"
+      },
+      {
+        "year": "2017",
+        "title": "Junior Developer",
+        "company": "Startup Studio"
+      }
+    ],
+    "education": [
+      {
+        "title": "Master of Computer Science",
+        "institution": "University of Technology",
+        "year": "2016-2018"
+      },
+      {
+        "title": "Bachelor of Software Engineering",
+        "institution": "State University",
+        "year": "2012-2016"
+      }
+    ],
+    "interests": "When not coding, I enjoy hiking, reading science fiction, and exploring new technologies through side projects. I'm also an active contributor to open source and regularly attend local tech meetups.",
+    "resumeUrl": "/resume.pdf"
   },
-  "skills": ["JavaScript", "React", "Next.js", "Node.js", "Tailwind CSS"],
+  "skills": {
+    "categories": [
+      {
+        "name": "Frontend",
+        "items": [
+          { "name": "JavaScript", "level": 95 },
+          { "name": "React.js", "level": 90 },
+          { "name": "Next.js", "level": 85 },
+          { "name": "TypeScript", "level": 80 },
+          { "name": "Tailwind CSS", "level": 90 },
+          { "name": "HTML/CSS", "level": 95 }
+        ]
+      },
+      {
+        "name": "Backend",
+        "items": [
+          { "name": "Node.js", "level": 85 },
+          { "name": "Express", "level": 80 },
+          { "name": "MongoDB", "level": 75 },
+          { "name": "PostgreSQL", "level": 70 },
+          { "name": "GraphQL", "level": 65 },
+          { "name": "REST APIs", "level": 90 }
+        ]
+      },
+      {
+        "name": "Tools & Other",
+        "items": [
+          { "name": "Git", "level": 90 },
+          { "name": "Docker", "level": 70 },
+          { "name": "CI/CD", "level": 75 },
+          { "name": "Jest", "level": 80 },
+          { "name": "AWS", "level": 65 },
+          { "name": "Figma", "level": 60 }
+        ]
+      }
+    ]
+  },
   "projects": [
     {
-      "title": "My Portfolio Site",
-      "description": "A custom-built portfolio using Next.js and Tailwind.",
-      "tech": ["Next.js", "Tailwind", "Framer Motion"],
-      "link": "https://example.com"
+      "title": "Personal Portfolio",
+      "description": "A responsive portfolio website built with Next.js and Tailwind CSS, featuring animations and modern design elements.",
+      "image": "/projects/portfolio.jpg",
+      "technologies": ["Next.js", "Tailwind CSS", "Framer Motion"],
+      "demoUrl": "https://example.com",
+      "sourceUrl": "https://github.com/johndoe/portfolio",
+      "featured": true
+    },
+    {
+      "title": "E-commerce Platform",
+      "description": "A full-featured e-commerce solution with product catalog, shopping cart, and payment processing capabilities.",
+      "image": "/projects/ecommerce.jpg",
+      "technologies": ["React", "Node.js", "MongoDB", "Stripe"],
+      "demoUrl": "https://store-example.com",
+      "sourceUrl": "https://github.com/johndoe/ecommerce",
+      "featured": true
+    },
+    {
+      "title": "Task Management App",
+      "description": "A productivity application for managing tasks, projects, and deadlines with team collaboration features.",
+      "image": "/projects/taskapp.jpg",
+      "technologies": ["React", "Firebase", "Material UI"],
+      "demoUrl": "https://tasks-example.com",
+      "sourceUrl": "https://github.com/johndoe/taskapp",
+      "featured": false
+    },
+    {
+      "title": "Weather Dashboard",
+      "description": "Real-time weather information dashboard with location search and 5-day forecasts.",
+      "image": "/projects/weather.jpg",
+      "technologies": ["JavaScript", "OpenWeather API", "Chart.js"],
+      "demoUrl": "https://weather-example.com",
+      "sourceUrl": "https://github.com/johndoe/weather",
+      "featured": false
+    }
+  ],
+  "testimonials": [
+    {
+      "name": "Jane Smith",
+      "role": "Project Manager at Tech Corp",
+      "image": "/testimonials/jane.jpg",
+      "text": "John delivered our project on time and exceeded our expectations. His attention to detail and problem-solving abilities made a huge difference."
+    },
+    {
+      "name": "Michael Johnson",
+      "role": "CEO at Startup Inc",
+      "image": "/testimonials/michael.jpg",
+      "text": "Working with John was a pleasure. He quickly understood our requirements and created an elegant solution that perfectly matched our needs."
+    },
+    {
+      "name": "Sarah Williams",
+      "role": "Lead Designer at Creative Agency",
+      "image": "/testimonials/sarah.jpg",
+      "text": "John's technical skills and collaborative approach made him an invaluable partner on our project. I would gladly work with him again."
     }
   ],
   "contact": {
     "email": "john.doe@example.com",
-    "phone": "+1234567890"
+    "phone": "+1234567890",
+    "location": "San Francisco, CA",
+    "availability": "Currently available for freelance and contract work",
+    "socialMedia": {
+      "github": "https://github.com/johndoe",
+      "linkedin": "https://linkedin.com/in/johndoe",
+      "twitter": "https://twitter.com/johndoe"
+    }
   }
 }
