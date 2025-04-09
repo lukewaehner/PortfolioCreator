@@ -23,8 +23,8 @@ export default function Home() {
         <p>This is a placeholder for the Projects component.</p>
       </section>
       {/* Contact Section */}
-      {/* <Contact /> */}
-      <ContactAlternative />
+      <Contact />
+      {/* <ContactAlternative /> */}
       {/* Footer Section */}
     </main>
   );
