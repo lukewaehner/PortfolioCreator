@@ -363,25 +363,7 @@ export default function ContactAlternative() {
                     ))
                   )
                   .slice(0, 5)
-              : [
-                  "JavaScript",
-                  "React",
-                  "Node.js",
-                  "Tailwind CSS",
-                  "TypeScript",
-                ].map((skill, i) => (
-                  <span
-                    key={i}
-                    className="text-[10px] sm:text-xs px-2 sm:px-3 py-0.5 sm:py-1 rounded-full"
-                    style={{
-                      backgroundColor: `${colors.primary}10`,
-                      color: colors.text,
-                      border: `1px solid ${colors.primary}20`,
-                    }}
-                  >
-                    {skill}
-                  </span>
-                ))}
+              : null}
           </motion.div>
         </div>
       </div>

@@ -65,7 +65,7 @@ export default function About() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          {about.summary || "A brief introduction about myself and my journey."}
+          {about.summary}
         </motion.p>
       </div>
 
@@ -88,30 +88,7 @@ export default function About() {
             className="relative border-l-2 pl-5 pb-2"
             style={{ borderColor: `${colors.primary}40` }}
           >
-            {(
-              about.journey || [
-                {
-                  year: "2023",
-                  title: "Senior Full Stack Developer",
-                  company: "Tech Innovations Inc.",
-                },
-                {
-                  year: "2021",
-                  title: "Frontend Lead",
-                  company: "Digital Solutions",
-                },
-                {
-                  year: "2019",
-                  title: "Web Developer",
-                  company: "Creative Web Agency",
-                },
-                {
-                  year: "2017",
-                  title: "Junior Developer",
-                  company: "Startup Studio",
-                },
-              ]
-            ).map((milestone, i) => (
+            {about.journey?.map((milestone, i) => (
               <motion.div
                 key={i}
                 className="mb-6 relative"
@@ -175,7 +152,7 @@ export default function About() {
               >
                 Experience
               </h3>
-              <p className="text-2xl font-bold">{about.experience || "6+"}</p>
+              <p className="text-2xl font-bold">{about.experience}</p>
               <p className="text-xs text-gray-500">Years</p>
             </motion.div>
 
@@ -196,7 +173,7 @@ export default function About() {
               >
                 Projects
               </h3>
-              <p className="text-2xl font-bold">{about.projects || "25+"}</p>
+              <p className="text-2xl font-bold">{about.projects}</p>
               <p className="text-xs text-gray-500">Completed</p>
             </motion.div>
           </div>
@@ -248,20 +225,7 @@ export default function About() {
               Education & Certifications
             </h3>
             <div className="space-y-3">
-              {(
-                about.education || [
-                  {
-                    title: "Master of Computer Science",
-                    institution: "University of Technology",
-                    year: "2016-2018",
-                  },
-                  {
-                    title: "Bachelor of Software Engineering",
-                    institution: "State University",
-                    year: "2012-2016",
-                  },
-                ]
-              ).map((edu, i) => (
+              {about.education?.map((edu, i) => (
                 <motion.div
                   key={i}
                   className="rounded-lg p-3 transition-all"
@@ -298,16 +262,7 @@ export default function About() {
               Core Strengths
             </h3>
             <div className="grid grid-cols-2 gap-2">
-              {(
-                about.strengths || [
-                  "Problem Solving",
-                  "Technical Leadership",
-                  "User-Centered Design",
-                  "System Architecture",
-                  "Agile Methodologies",
-                  "Performance Optimization",
-                ]
-              ).map((strength, i) => (
+              {about.strengths?.map((strength, i) => (
                 <motion.div
                   key={i}
                   className="px-3 py-2 rounded-lg flex items-center gap-2"
@@ -349,8 +304,7 @@ export default function About() {
               Beyond Work
             </h3>
             <p className="text-sm" style={{ color: `${colors.text}cc` }}>
-              {about.interests ||
-                "When not coding, I enjoy hiking, reading science fiction, and exploring new technologies through side projects. I'm also an active contributor to open source and regularly attend local tech meetups."}
+              {about.interests}
             </p>
           </div>
         </motion.div>

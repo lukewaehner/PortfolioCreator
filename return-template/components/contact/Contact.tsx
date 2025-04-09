@@ -51,21 +51,19 @@ export default function Contact() {
 
   return (
     <section
-      className="min-h-screen sm:min-h-[45vh] max-h-none sm:max-h-[60vh] md:max-h-none lg:max-h-[70vh] flex flex-col items-center justify-center bg-white rounded-lg sm:rounded-xl md:rounded-2xl shadow-md sm:shadow-lg md:shadow-xl overflow-hidden w-full"
+      className="flex flex-col rounded-lg sm:rounded-xl md:rounded-2xl shadow-md sm:shadow-lg md:shadow-xl overflow-hidden w-full"
       style={{
         color: colors.text,
       }}
     >
-      <div className="grid grid-cols-1 sm:grid-cols-2 w-full h-full">
+      <div className="grid grid-cols-1 sm:grid-cols-2 w-full">
         {/* Left Side - Contact Info */}
         <div
-          className="p-5 sm:p-6 md:p-8 lg:p-16 xl:p-20 flex flex-col justify-between max-h-none"
+          className="p-5 sm:p-6 md:p-8 lg:p-16 xl:p-20 flex flex-col justify-between"
           style={{
             background: `linear-gradient(135deg, ${colors.primary}, ${colors.secondary})`,
             color: "white",
-            minHeight: "350px",
-            height: "100%",
-            width: "100%",
+            minHeight: "300px",
           }}
         >
           <div>
@@ -146,8 +144,8 @@ export default function Contact() {
 
         {/* Right Side - Form */}
         <div
-          className="p-5 sm:p-6 md:p-8 lg:p-12 xl:p-16 w-full"
-          style={{ minHeight: "300px", height: "100%" }}
+          className="p-5 sm:p-6 md:p-8 lg:p-12 xl:p-16 w-full bg-white"
+          style={{ minHeight: "300px" }}
         >
           <motion.h3
             className="text-lg sm:text-xl md:text-xl lg:text-2xl font-semibold mb-4 sm:mb-5 md:mb-6 lg:mb-8"

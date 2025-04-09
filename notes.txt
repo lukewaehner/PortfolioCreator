@@ -26,3 +26,9 @@ Other notes:
 - user can choose to have the app hosted for them (partner eventually)
 - aws hosting our website
 - backend with user data, analytics, different themes and customization options / widgets
+
+---
+
+Component notes:
+Don't allow users to send over X amount of messages through contact form (is API free? -> its fine if so)
+- check header / ip address to limit
