@@ -29,6 +29,15 @@ Other notes:
 
 ---
 
+Scaling notes:
+impressions -> ads
+sanitize GPT prompt
+sell user data
+
+---
+
 Component notes:
 Don't allow users to send over X amount of messages through contact form (is API free? -> its fine if so)
 - check header / ip address to limit
+projects section -> dont include github link just link to project
+general dont make everything coding focused
