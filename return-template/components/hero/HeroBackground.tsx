@@ -1,15 +1,21 @@
+"use client";
+
 import Image from "next/image";
 import * as motion from "motion/react-client";
 import content from "@/data/content.json";
+import { useTheme } from "@/components/Themes/ThemeProvider";
 
 export default function HeroBackground() {
   const { name, title, tagline, image, ctas } = content.hero;
-  const { colors } = content.theme;
+
+  // Get theme from ThemeProvider context
+  const { theme, isDarkMode } = useTheme();
+  const colors = theme;
 
   return (
-    <section className="relative min-h-screen w-full flex items-center justify-center overflow-hidden shadow-xl rounded-2xl">
+    <section className="relative min-h-screen w-full flex items-center justify-center overflow-hidden shadow-xl rounded-2xl theme-transition">
       {/* Background with gradient overlay */}
-      <div className="absolute inset-0 w-full h-full">
+      <div className="absolute inset-0 w-full h-full theme-transition">
         <Image
           src={image}
           alt="Background"
@@ -21,7 +27,7 @@ export default function HeroBackground() {
         />
         {/* Modern gradient overlay using theme colors */}
         <div
-          className="absolute inset-0"
+          className="absolute inset-0 theme-transition"
           style={{
             background: `linear-gradient(135deg, ${colors.primary}99 0%, ${colors.secondary}99 100%)`,
           }}
@@ -32,7 +38,7 @@ export default function HeroBackground() {
       <div className="relative z-10 w-full max-w-5xl mx-auto px-4 sm:px-6 md:px-8 py-8 sm:py-12 md:py-16 text-center">
         {/* Glass morphism effect container */}
         <motion.div
-          className="backdrop-blur-md p-5 sm:p-8 md:p-12 rounded-xl sm:rounded-2xl border shadow-xl sm:shadow-2xl"
+          className="backdrop-blur-md p-5 sm:p-8 md:p-12 rounded-xl sm:rounded-2xl border shadow-xl sm:shadow-2xl theme-transition"
           style={{
             backgroundColor: `${colors.background}30`,
             borderColor: `${colors.background}30`,
@@ -47,19 +53,35 @@ export default function HeroBackground() {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8 }}
           >
-            <motion.h1
-              className="text-2xl sm:text-4xl md:text-6xl lg:text-7xl font-bold mb-2 sm:mb-4 tracking-tight"
-              style={{ color: colors.background }}
-              initial={{ y: 20 }}
-              animate={{ y: 0 }}
-              transition={{ duration: 0.5, ease: "easeOut" }}
-            >
-              {name}
-            </motion.h1>
+            {/* Name with different styling based on theme */}
+            {isDarkMode ? (
+              <motion.h1
+                className="text-2xl sm:text-4xl md:text-6xl lg:text-7xl font-bold mb-2 sm:mb-4 tracking-tight theme-transition"
+                style={{
+                  color: colors.text,
+                  textShadow: `0 0 15px ${colors.primary}60, 0 0 30px ${colors.secondary}40`,
+                }}
+                initial={{ y: 20 }}
+                animate={{ y: 0 }}
+                transition={{ duration: 0.5, ease: "easeOut" }}
+              >
+                {name}
+              </motion.h1>
+            ) : (
+              <motion.h1
+                className="text-2xl sm:text-4xl md:text-6xl lg:text-7xl font-bold mb-2 sm:mb-4 tracking-tight theme-transition"
+                style={{ color: colors.text }}
+                initial={{ y: 20 }}
+                animate={{ y: 0 }}
+                transition={{ duration: 0.5, ease: "easeOut" }}
+              >
+                {name}
+              </motion.h1>
+            )}
 
             <motion.p
-              className="text-lg sm:text-xl md:text-2xl font-medium mb-3 sm:mb-6"
-              style={{ color: `${colors.background}E6` }}
+              className="text-lg sm:text-xl md:text-2xl font-medium mb-3 sm:mb-6 theme-transition"
+              style={{ color: `${colors.text}E6` }}
               initial={{ y: 20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.5, delay: 0.2, ease: "easeOut" }}
@@ -69,8 +91,8 @@ export default function HeroBackground() {
 
             {tagline && (
               <motion.p
-                className="text-sm sm:text-base md:text-lg max-w-2xl mx-auto mb-4 sm:mb-6 md:mb-8 leading-relaxed"
-                style={{ color: `${colors.background}CC` }}
+                className="text-sm sm:text-base md:text-lg max-w-2xl mx-auto mb-4 sm:mb-6 md:mb-8 leading-relaxed theme-transition"
+                style={{ color: `${colors.text}CC` }}
                 initial={{ y: 20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 0.5, delay: 0.4, ease: "easeOut" }}
@@ -90,15 +112,19 @@ export default function HeroBackground() {
                 <motion.a
                   key={i}
                   href={cta.href}
-                  className="px-5 sm:px-6 md:px-8 py-2 sm:py-3 rounded-full text-sm sm:text-base font-medium transition-all w-full sm:w-auto flex items-center justify-center"
+                  className="px-5 sm:px-6 md:px-8 py-2 sm:py-3 rounded-full text-sm sm:text-base font-medium transition-all w-full sm:w-auto flex items-center justify-center theme-transition"
                   style={{
                     backgroundColor: cta.primary
                       ? colors.accent
                       : "transparent",
                     border: `2px solid ${
-                      cta.primary ? colors.accent : colors.background
+                      cta.primary ? colors.accent : colors.text
                     }`,
-                    color: cta.primary ? colors.text : colors.background,
+                    color: cta.primary
+                      ? isDarkMode
+                        ? colors.background
+                        : colors.text
+                      : colors.text,
                     boxShadow: cta.primary
                       ? `0 4px 14px ${colors.accent}50`
                       : "none",
@@ -107,7 +133,7 @@ export default function HeroBackground() {
                     scale: 1.03,
                     boxShadow: cta.primary
                       ? `0 6px 20px ${colors.accent}80`
-                      : `0 6px 20px ${colors.background}40`,
+                      : `0 6px 20px ${colors.text}40`,
                   }}
                   whileTap={{ scale: 0.97 }}
                 >
@@ -120,7 +146,7 @@ export default function HeroBackground() {
 
         {/* Decorative elements using theme colors */}
         <motion.div
-          className="absolute -bottom-8 sm:-bottom-16 -right-8 sm:-right-16 w-32 sm:w-48 md:w-64 h-32 sm:h-48 md:h-64 rounded-full"
+          className="absolute -bottom-8 sm:-bottom-16 -right-8 sm:-right-16 w-32 sm:w-48 md:w-64 h-32 sm:h-48 md:h-64 rounded-full theme-transition"
           style={{
             background: `radial-gradient(circle, ${colors.accent}40 0%, transparent 70%)`,
           }}
@@ -130,7 +156,7 @@ export default function HeroBackground() {
         />
 
         <motion.div
-          className="absolute -top-4 sm:-top-8 -left-4 sm:-left-8 w-20 sm:w-32 md:w-40 h-20 sm:h-32 md:h-40 rounded-full"
+          className="absolute -top-4 sm:-top-8 -left-4 sm:-left-8 w-20 sm:w-32 md:w-40 h-20 sm:h-32 md:h-40 rounded-full theme-transition"
           style={{
             background: `radial-gradient(circle, ${colors.secondary}30 0%, transparent 70%)`,
           }}

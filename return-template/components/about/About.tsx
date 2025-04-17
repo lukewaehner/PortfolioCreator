@@ -1,5 +1,8 @@
+"use client";
+
 import * as motion from "motion/react-client";
 import content from "@/data/content.json";
+import { useTheme } from "@/components/Themes/ThemeProvider";
 
 // Define types for the data structure
 interface Education {
@@ -27,13 +30,16 @@ interface About {
 }
 
 export default function About() {
-  const { colors } = content.theme;
+  // Get theme from ThemeProvider context
+  const { theme } = useTheme();
+  const colors = theme;
+
   // Use proper typing for the about section
   const about: About = content.about || {};
 
   return (
     <section
-      className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 md:px-8 lg:px-12 overflow-hidden rounded-lg sm:rounded-xl md:rounded-2xl shadow-md sm:shadow-lg md:shadow-xl"
+      className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 md:px-8 lg:px-12 overflow-hidden rounded-lg sm:rounded-xl md:rounded-2xl shadow-md sm:shadow-lg md:shadow-xl theme-transition"
       style={{
         background: `linear-gradient(135deg, ${colors.background}f5, ${colors.background})`,
         color: colors.text,
@@ -42,7 +48,7 @@ export default function About() {
       {/* Header with accent line */}
       <div className="max-w-6xl mx-auto mb-8 sm:mb-10 md:mb-12">
         <motion.div
-          className="w-12 sm:w-16 h-1 mb-4 rounded-full"
+          className="w-12 sm:w-16 h-1 mb-4 rounded-full theme-transition"
           style={{ backgroundColor: colors.accent }}
           initial={{ width: 0 }}
           animate={{ width: 64 }}
@@ -50,7 +56,7 @@ export default function About() {
         />
 
         <motion.h2
-          className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4"
+          className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 theme-transition"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
@@ -59,7 +65,7 @@ export default function About() {
         </motion.h2>
 
         <motion.p
-          className="text-sm sm:text-base md:text-lg max-w-3xl"
+          className="text-sm sm:text-base md:text-lg max-w-3xl theme-transition"
           style={{ color: `${colors.text}cc` }}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -79,13 +85,13 @@ export default function About() {
           transition={{ duration: 0.7, ease: "easeOut" }}
         >
           <h3
-            className="text-lg sm:text-xl font-semibold mb-4"
+            className="text-lg sm:text-xl font-semibold mb-4 theme-transition"
             style={{ color: colors.primary }}
           >
             Career Journey
           </h3>
           <div
-            className="relative border-l-2 pl-5 pb-2"
+            className="relative border-l-2 pl-5 pb-2 theme-transition"
             style={{ borderColor: `${colors.primary}40` }}
           >
             {about.journey?.map((milestone, i) => (
@@ -97,7 +103,7 @@ export default function About() {
                 transition={{ duration: 0.5, delay: 0.1 * i }}
               >
                 <div
-                  className="absolute -left-[29px] w-6 h-6 rounded-full flex items-center justify-center"
+                  className="absolute -left-[29px] w-6 h-6 rounded-full flex items-center justify-center theme-transition"
                   style={{
                     background:
                       i === 0
@@ -112,7 +118,7 @@ export default function About() {
                 </div>
                 <div className="flex flex-col">
                   <span
-                    className="text-sm font-semibold"
+                    className="text-sm font-semibold theme-transition"
                     style={{
                       color: i === 0 ? colors.primary : `${colors.text}cc`,
                     }}
@@ -120,12 +126,15 @@ export default function About() {
                     {milestone.year}
                   </span>
                   <h4
-                    className="text-base font-medium mt-1"
+                    className="text-base font-medium mt-1 theme-transition"
                     style={{ color: i === 0 ? colors.secondary : colors.text }}
                   >
                     {milestone.title}
                   </h4>
-                  <p className="text-xs text-gray-500 mt-1">
+                  <p
+                    className="text-xs mt-1 theme-transition"
+                    style={{ color: colors.textSecondary }}
+                  >
                     {milestone.company}
                   </p>
                 </div>
@@ -136,7 +145,7 @@ export default function About() {
           {/* Stats cards in a row */}
           <div className="grid grid-cols-2 gap-3 mt-2">
             <motion.div
-              className="p-4 rounded-lg"
+              className="p-4 rounded-lg theme-transition"
               style={{
                 background: `linear-gradient(135deg, ${colors.primary}11, ${colors.secondary}11)`,
                 border: `1px solid ${colors.primary}20`,
@@ -145,19 +154,25 @@ export default function About() {
                 y: -3,
                 boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1)",
               }}
+              transition={{ duration: 0.2 }}
             >
               <h3
-                className="text-sm font-medium mb-1"
+                className="text-sm font-medium mb-1 theme-transition"
                 style={{ color: colors.primary }}
               >
                 Experience
               </h3>
               <p className="text-2xl font-bold">{about.experience}</p>
-              <p className="text-xs text-gray-500">Years</p>
+              <p
+                className="text-xs theme-transition"
+                style={{ color: colors.textSecondary }}
+              >
+                Years
+              </p>
             </motion.div>
 
             <motion.div
-              className="p-4 rounded-lg"
+              className="p-4 rounded-lg theme-transition"
               style={{
                 background: `linear-gradient(135deg, ${colors.secondary}11, ${colors.accent}11)`,
                 border: `1px solid ${colors.secondary}20`,
@@ -166,15 +181,21 @@ export default function About() {
                 y: -3,
                 boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1)",
               }}
+              transition={{ duration: 0.2 }}
             >
               <h3
-                className="text-sm font-medium mb-1"
+                className="text-sm font-medium mb-1 theme-transition"
                 style={{ color: colors.secondary }}
               >
                 Projects
               </h3>
               <p className="text-2xl font-bold">{about.projects}</p>
-              <p className="text-xs text-gray-500">Completed</p>
+              <p
+                className="text-xs theme-transition"
+                style={{ color: colors.textSecondary }}
+              >
+                Completed
+              </p>
             </motion.div>
           </div>
         </motion.div>
@@ -189,37 +210,37 @@ export default function About() {
           {/* Bio */}
           <div>
             <h3
-              className="text-lg sm:text-xl font-semibold mb-4"
+              className="text-lg sm:text-xl font-semibold mb-4 theme-transition"
               style={{ color: colors.primary }}
             >
               My Story
             </h3>
             <div className="space-y-4 text-sm sm:text-base">
               {typeof about.bio === "string" ? (
-                <p style={{ color: `${colors.text}cc` }}>{about.bio}</p>
+                <p
+                  className="theme-transition"
+                  style={{ color: `${colors.text}cc` }}
+                >
+                  {about.bio}
+                </p>
               ) : Array.isArray(about.bio) ? (
                 about.bio.map((paragraph: string, i: number) => (
-                  <p key={i} style={{ color: `${colors.text}cc` }}>
+                  <p
+                    key={i}
+                    className="theme-transition"
+                    style={{ color: `${colors.text}cc` }}
+                  >
                     {paragraph}
                   </p>
                 ))
-              ) : (
-                [
-                  "I'm a passionate developer with a strong focus on creating intuitive and engaging user experiences.",
-                  "With a background in both design and development, I bring a unique perspective to every project, ensuring that both aesthetics and functionality are given equal importance.",
-                ].map((paragraph: string, i: number) => (
-                  <p key={i} style={{ color: `${colors.text}cc` }}>
-                    {paragraph}
-                  </p>
-                ))
-              )}
+              ) : null}
             </div>
           </div>
 
           {/* Education and certifications */}
           <div>
             <h3
-              className="text-lg sm:text-xl font-semibold mb-4"
+              className="text-lg sm:text-xl font-semibold mb-4 theme-transition"
               style={{ color: colors.secondary }}
             >
               Education & Certifications
@@ -228,7 +249,7 @@ export default function About() {
               {about.education?.map((edu, i) => (
                 <motion.div
                   key={i}
-                  className="rounded-lg p-3 transition-all"
+                  className="rounded-lg p-3 transition-all theme-transition"
                   style={{
                     border: `1px solid ${colors.secondary}15`,
                     background:
@@ -243,9 +264,15 @@ export default function About() {
                         : `${colors.primary}10`,
                     y: -2,
                   }}
+                  transition={{ duration: 0.2 }}
                 >
-                  <h4 className="font-medium text-sm">{edu.title}</h4>
-                  <p className="text-xs mt-1 text-gray-600">
+                  <h4 className="font-medium text-sm theme-transition">
+                    {edu.title}
+                  </h4>
+                  <p
+                    className="text-xs mt-1 theme-transition"
+                    style={{ color: colors.textSecondary }}
+                  >
                     {edu.institution} • {edu.year}
                   </p>
                 </motion.div>
@@ -256,7 +283,7 @@ export default function About() {
           {/* Core strengths */}
           <div>
             <h3
-              className="text-lg font-semibold mb-3"
+              className="text-lg font-semibold mb-3 theme-transition"
               style={{ color: colors.accent }}
             >
               Core Strengths
@@ -265,7 +292,7 @@ export default function About() {
               {about.strengths?.map((strength, i) => (
                 <motion.div
                   key={i}
-                  className="px-3 py-2 rounded-lg flex items-center gap-2"
+                  className="px-3 py-2 rounded-lg flex items-center gap-2 theme-transition"
                   style={{
                     border: `1px solid ${colors.accent}15`,
                     background: `${colors.accent}05`,
@@ -279,17 +306,17 @@ export default function About() {
                   transition={{ duration: 0.3, delay: 0.05 * i }}
                 >
                   <div
-                    className="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0"
+                    className="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 theme-transition"
                     style={{ backgroundColor: `${colors.accent}15` }}
                   >
                     <span
-                      className="text-xs font-medium"
+                      className="text-xs font-medium theme-transition"
                       style={{ color: colors.accent }}
                     >
                       {i + 1}
                     </span>
                   </div>
-                  <span className="text-sm">{strength}</span>
+                  <span className="text-sm theme-transition">{strength}</span>
                 </motion.div>
               ))}
             </div>
@@ -298,12 +325,15 @@ export default function About() {
           {/* Beyond work section */}
           <div>
             <h3
-              className="text-lg sm:text-xl font-semibold mb-3"
+              className="text-lg sm:text-xl font-semibold mb-3 theme-transition"
               style={{ color: colors.accent }}
             >
               Beyond Work
             </h3>
-            <p className="text-sm" style={{ color: `${colors.text}cc` }}>
+            <p
+              className="text-sm theme-transition"
+              style={{ color: `${colors.text}cc` }}
+            >
               {about.interests}
             </p>
           </div>

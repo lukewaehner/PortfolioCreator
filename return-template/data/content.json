@@ -1,11 +1,26 @@
 {
   "theme": {
     "colors": {
-      "primary": "#1E3A8A",
-      "secondary": "#9333EA",
-      "background": "#F3F4F6",
-      "text": "#111827",
-      "accent": "#F59E0B"
+      "light": {
+        "primary": "#1E3A8A",
+        "secondary": "#9333EA",
+        "background": "#F3F4F6",
+        "text": "#111827",
+        "accent": "#F59E0B",
+        "border": "#E2E8F0",
+        "surface": "#FFFFFF",
+        "textSecondary": "#64748B"
+      },
+      "dark": {
+        "primary": "#3B82F6",
+        "secondary": "#A78BFA",
+        "background": "#0F172A",
+        "text": "#F1F5F9",
+        "accent": "#FBBF24",
+        "border": "#334155",
+        "surface": "#1E293B",
+        "textSecondary": "#94A3B8"
+      }
     }
   },
   "hero": {

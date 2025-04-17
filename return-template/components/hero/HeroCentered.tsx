@@ -1,14 +1,20 @@
+"use client";
+
 import Image from "next/image";
 import * as motion from "motion/react-client";
 import content from "@/data/content.json";
+import { useTheme } from "@/components/Themes/ThemeProvider";
 
 export default function HeroCentered() {
   const { name, title, tagline, image, ctas } = content.hero;
-  const { colors } = content.theme;
+
+  // Get theme from ThemeProvider context
+  const { theme, isDarkMode } = useTheme();
+  const colors = theme;
 
   return (
     <section
-      className="min-h-screen flex flex-col items-center justify-center text-center px-4 md:px-8 py-10 sm:py-16 rounded-2xl shadow-xl"
+      className="min-h-screen flex flex-col items-center justify-center text-center px-4 md:px-8 py-10 sm:py-16 rounded-2xl shadow-xl theme-transition"
       style={{
         background: `linear-gradient(to bottom, ${colors.background}, ${colors.background}ee)`,
         color: colors.text,
@@ -54,21 +60,51 @@ export default function HeroCentered() {
         </div>
       </motion.div>
 
-      {/* Name with gradient text effect using theme colors */}
-      <motion.h1
-        className="text-3xl sm:text-4xl md:text-6xl lg:text-8xl font-bold mb-2 sm:mb-3 tracking-tight px-2"
+      {/* Optional gradient bar - only show in light mode */}
+      <motion.div
+        className="w-full h-0.5 sm:h-1 md:h-2 rounded-lg mb-8 sm:mb-10 md:mb-12 mt-2"
         style={{
           background: `linear-gradient(to right, ${colors.primary}, ${colors.secondary})`,
-          WebkitBackgroundClip: "text",
-          WebkitTextFillColor: "transparent",
-          backgroundClip: "text",
+          maxWidth: "250px",
+          margin: "0 auto",
         }}
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
-      >
-        {name}
-      </motion.h1>
+        initial={{ scaleX: 0, opacity: 0 }}
+        animate={{ scaleX: 1, opacity: 1 }}
+        transition={{ duration: 0.6, delay: 0.3 }}
+      />
+
+      {/* Name with completely different approaches between light and dark mode */}
+      {isDarkMode ? (
+        // Dark mode: Plain text with glow effect
+        <motion.h1
+          className="text-3xl sm:text-4xl md:text-6xl lg:text-8xl font-bold mb-2 sm:mb-3 tracking-tight px-2"
+          style={{
+            color: colors.text,
+            textShadow: `0 0 15px ${colors.primary}60, 0 0 30px ${colors.secondary}40`,
+          }}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
+        >
+          {name}
+        </motion.h1>
+      ) : (
+        // Light mode: Gradient text
+        <motion.h1
+          className="text-3xl sm:text-4xl md:text-6xl lg:text-8xl font-bold mb-2 sm:mb-3 tracking-tight px-2"
+          style={{
+            background: `linear-gradient(to right, ${colors.primary}, ${colors.secondary})`,
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent",
+            backgroundClip: "text",
+          }}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
+        >
+          {name}
+        </motion.h1>
+      )}
 
       {/* Title with subtle animation using secondary color */}
       <motion.div
@@ -122,11 +158,17 @@ export default function HeroCentered() {
               style={{
                 backgroundColor: cta.primary
                   ? buttonColor
+                  : isDarkMode
+                  ? `${buttonColor}15`
                   : "rgba(255, 255, 255, 0.03)",
                 border: `2px solid ${
                   cta.primary ? "transparent" : buttonColor
                 }`,
-                color: cta.primary ? colors.text : buttonColor,
+                color: cta.primary
+                  ? isDarkMode
+                    ? colors.background
+                    : colors.text
+                  : buttonColor,
                 boxShadow: cta.primary
                   ? `0 10px 20px -10px ${buttonColor}80`
                   : "0 4px 6px rgba(0, 0, 0, 0.05)",
@@ -139,6 +181,8 @@ export default function HeroCentered() {
                   : "0 10px 25px rgba(0, 0, 0, 0.1)",
                 backgroundColor: cta.primary
                   ? buttonColor
+                  : isDarkMode
+                  ? `${buttonColor}25`
                   : "rgba(255, 255, 255, 0.07)",
               }}
               whileTap={{ scale: 0.97 }}
